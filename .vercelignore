@@ -1,4 +1,6 @@
-contracts/
+contracts/*.sol
+contracts/deploy.js
+contracts/README.md
 hardhat.config.js
 .env
 .env.example
