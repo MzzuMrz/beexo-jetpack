@@ -4,8 +4,8 @@
  * IMPORTANT: Update CONTRACT_ADDRESS after deploying the contract
  */
 
-// Update this after deploying the contract!
-export const CONTRACT_ADDRESS = "0x0000000000000000000000000000000000000000"
+// Deployed on Polygon Amoy Testnet
+export const CONTRACT_ADDRESS = "0x5cc10d3a5a50199db218f64bd3f6d71b1e6e87b9"
 
 // Entry fee in ETH
 export const ENTRY_FEE = "0.001"
@@ -18,11 +18,17 @@ export const SUPPORTED_NETWORKS = {
     rpc: "https://polygon-rpc.com/",
     explorer: "https://polygonscan.com"
   },
-  mumbai: {
-    chainId: "0x13881",
-    name: "Mumbai Testnet",
-    rpc: "https://rpc-mumbai.maticvigil.com/",
-    explorer: "https://mumbai.polygonscan.com"
+  amoy: {
+    chainId: "0x13882",
+    name: "Polygon Amoy Testnet",
+    rpc: "https://rpc-amoy.polygon.technology/",
+    explorer: "https://amoy.polygonscan.com"
+  },
+  sepolia: {
+    chainId: "0xaa36a7",
+    name: "Sepolia Testnet",
+    rpc: "https://rpc.sepolia.org/",
+    explorer: "https://sepolia.etherscan.io"
   },
   arbitrum: {
     chainId: "0xa4b1",

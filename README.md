@@ -2,6 +2,8 @@
 
 An endless runner game built for the **XO Connect Challenge** hackathon by Beexo Wallet. Players pay to play with crypto and earn rewards based on their score!
 
+**🎮 Live Demo:** [https://beexo-jetpack.vercel.app/](https://beexo-jetpack.vercel.app/)
+
 [![XO Connect](https://img.shields.io/badge/XO_Connect-Integrated-success)](https://www.npmjs.com/package/xo-connect)
 [![Beexo Wallet](https://img.shields.io/badge/Beexo_Wallet-Compatible-blue)]()
 

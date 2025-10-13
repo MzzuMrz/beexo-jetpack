@@ -8,7 +8,7 @@
  * 4. Run: npx hardhat run contracts/deploy.js --network polygon
  */
 
-const hre = require("hardhat");
+import hre from "hardhat";
 
 async function main() {
   console.log("Deploying BeexoRunner contract...");
