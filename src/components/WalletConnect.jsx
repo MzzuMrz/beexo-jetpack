@@ -13,49 +13,62 @@ function WalletConnect({ onConnect }) {
     setError('')
 
     try {
-      // Try XO Connect first (for Beexo Wallet)
+      // Check if we're in Beexo Wallet environment
+      // XO Connect only works inside Beexo Wallet app
+      let isInBeexoWallet = false
+
       try {
-        console.log('Attempting XO Connect...')
-        const xoProvider = new ethers.BrowserProvider(
-          new XOConnectProvider(),
-          'any'
-        )
-        setIsBeexoWallet(true)
+        // Try to get client info - this only works in Beexo Wallet
+        const client = await XOConnect.getClient()
+        isInBeexoWallet = true
+        console.log('Running in Beexo Wallet:', client.alias)
+      } catch (e) {
+        console.log('Not in Beexo Wallet, using MetaMask')
+      }
 
-        await xoProvider.send('eth_requestAccounts', [])
-        const signer = await xoProvider.getSigner()
-        const address = await signer.getAddress()
-
-        // Get client info from Beexo Wallet
+      if (isInBeexoWallet) {
+        // Use XO Connect (only works in Beexo Wallet)
         try {
+          const xoProvider = new ethers.BrowserProvider(
+            new XOConnectProvider(),
+            'any'
+          )
+          setIsBeexoWallet(true)
+
+          await xoProvider.send('eth_requestAccounts', [])
+          const signer = await xoProvider.getSigner()
+          const address = await signer.getAddress()
+
           const client = await XOConnect.getClient()
           console.log('Connected to Beexo Wallet:', client.alias)
           console.log('Available currencies:', client.currencies)
-        } catch (e) {
-          console.log('Could not fetch client info:', e)
+
+          onConnect(address, xoProvider)
+          return
+        } catch (xoError) {
+          console.error('XO Connect error:', xoError)
+          setError('Failed to connect with Beexo Wallet')
+          setLoading(false)
+          return
         }
-
-        onConnect(address, xoProvider)
-        return
-      } catch (xoError) {
-        console.log('XO Connect not available, trying MetaMask...', xoError)
-
-        // Fallback to MetaMask
-        if (typeof window.ethereum !== 'undefined') {
-          const accounts = await window.ethereum.request({
-            method: 'eth_requestAccounts'
-          })
-
-          if (accounts.length > 0) {
-            const provider = new ethers.BrowserProvider(window.ethereum)
-            onConnect(accounts[0], provider)
-            return
-          }
-        }
-
-        setError('Please use Beexo Wallet or install MetaMask')
       }
+
+      // Use MetaMask (for regular browsers)
+      if (typeof window.ethereum !== 'undefined') {
+        const accounts = await window.ethereum.request({
+          method: 'eth_requestAccounts'
+        })
+
+        if (accounts.length > 0) {
+          const provider = new ethers.BrowserProvider(window.ethereum)
+          onConnect(accounts[0], provider)
+          return
+        }
+      }
+
+      setError('Please install MetaMask or use Beexo Wallet')
     } catch (err) {
+      console.error('Connection error:', err)
       setError(err.message || 'Failed to connect wallet')
     } finally {
       setLoading(false)
