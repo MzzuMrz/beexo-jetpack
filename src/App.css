@@ -1,0 +1,119 @@
+.App {
+  text-align: center;
+  padding: 20px;
+}
+
+.header {
+  margin-bottom: 30px;
+}
+
+.header h1 {
+  font-size: 3rem;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  margin-bottom: 10px;
+}
+
+.tagline {
+  color: rgba(255,255,255,0.9);
+  font-size: 1.2rem;
+}
+
+.wallet-info {
+  background: rgba(255,255,255,0.95);
+  padding: 15px 25px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.wallet-info p {
+  margin: 5px 0;
+  color: #333;
+  font-weight: 500;
+}
+
+.game-menu {
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.game-menu h2 {
+  color: #667eea;
+  margin-bottom: 25px;
+  font-size: 2rem;
+}
+
+.entry-fee {
+  background: #f7f7f7;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 25px;
+}
+
+.entry-fee p {
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.entry-fee strong {
+  color: #667eea;
+  font-size: 1.4rem;
+}
+
+.rewards {
+  text-align: left;
+  margin-bottom: 30px;
+}
+
+.rewards h3 {
+  color: #333;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.rewards ul {
+  list-style: none;
+  padding: 0;
+}
+
+.rewards li {
+  padding: 10px;
+  margin: 8px 0;
+  background: linear-gradient(90deg, #f7f7f7, white);
+  border-radius: 8px;
+  font-weight: 500;
+  color: #555;
+}
+
+.play-button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 18px 60px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.play-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+}
+
+.play-button:active {
+  transform: translateY(0);
+}
+
+.footer {
+  margin-top: 40px;
+  color: rgba(255,255,255,0.7);
+  font-size: 0.9rem;
+}

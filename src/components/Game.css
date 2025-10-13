@@ -1,0 +1,134 @@
+.game-container {
+  background: white;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+.game-header {
+  margin-bottom: 15px;
+}
+
+.score-display {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 12px 25px;
+  border-radius: 10px;
+  display: inline-block;
+}
+
+.score-display span {
+  font-size: 2rem;
+  margin-left: 10px;
+}
+
+.game-canvas {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.game-canvas canvas {
+  display: block;
+  border-radius: 10px;
+}
+
+.game-over-screen {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.game-over-screen h2 {
+  color: #c33;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.final-score {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  color: white;
+  padding: 30px;
+  border-radius: 15px;
+  margin-bottom: 30px;
+}
+
+.final-score p {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  opacity: 0.9;
+}
+
+.final-score h1 {
+  font-size: 4rem;
+  margin: 0;
+}
+
+.reward-info {
+  background: #f7f7f7;
+  padding: 30px;
+  border-radius: 15px;
+  margin-bottom: 30px;
+}
+
+.reward-info h3 {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.multiplier {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #667eea;
+  margin: 10px 0;
+}
+
+.amount {
+  font-size: 1.8rem;
+  color: #28a745;
+  font-weight: bold;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.play-again-button,
+.exit-button {
+  padding: 15px 40px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.play-again-button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.play-again-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+}
+
+.exit-button {
+  background: #6c757d;
+  color: white;
+}
+
+.exit-button:hover {
+  background: #5a6268;
+  transform: translateY(-2px);
+}
