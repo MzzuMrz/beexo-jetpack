@@ -55,13 +55,32 @@ function WalletConnect({ onConnect }) {
 
       // Use MetaMask (for regular browsers)
       if (typeof window.ethereum !== 'undefined') {
-        const accounts = await window.ethereum.request({
-          method: 'eth_requestAccounts'
-        })
+        try {
+          // If multiple wallets, try to use MetaMask specifically
+          let provider = window.ethereum
+          if (window.ethereum.providers?.length) {
+            provider = window.ethereum.providers.find(p => p.isMetaMask) || window.ethereum
+          }
 
-        if (accounts.length > 0) {
-          const provider = new ethers.BrowserProvider(window.ethereum)
-          onConnect(accounts[0], provider)
+          const accounts = await provider.request({
+            method: 'eth_requestAccounts'
+          })
+
+          if (accounts.length > 0) {
+            const ethersProvider = new ethers.BrowserProvider(provider)
+            onConnect(accounts[0], ethersProvider)
+            return
+          }
+        } catch (walletError) {
+          console.error('Wallet connection error:', walletError)
+          if (walletError.code === 4001) {
+            setError('Connection rejected. Please approve in your wallet.')
+          } else if (walletError.code === -32002) {
+            setError('Connection request pending. Please check your wallet.')
+          } else {
+            setError(`Wallet error: ${walletError.message || 'Please try again'}`)
+          }
+          setLoading(false)
           return
         }
       }
