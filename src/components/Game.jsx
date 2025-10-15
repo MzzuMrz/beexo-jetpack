@@ -124,7 +124,11 @@ function Game({ walletAddress, provider, sessionId, onGameEnd }) {
         if (gameOverFlag) return
 
         gameOverFlag = true
-        player.setTint(0xff0000)
+
+        // Visual feedback - change player color
+        if (player.setFillStyle) {
+          player.setFillStyle(0xff0000)
+        }
 
         scene.physics.pause()
 
