@@ -289,6 +289,7 @@ function Game({ walletAddress, provider, sessionId, onGameEnd }) {
           )}
 
           <div className="action-buttons">
+            {/* Show Claim button only if score >= 500 and not claimed yet */}
             {!rewardClaimed && finalScore >= 500 && (
               <button
                 className="play-again-button"
@@ -299,11 +300,12 @@ function Game({ walletAddress, provider, sessionId, onGameEnd }) {
               </button>
             )}
 
+            {/* Always show a button to continue */}
             <button
-              className={rewardClaimed ? "play-again-button" : "exit-button"}
+              className={finalScore < 500 || rewardClaimed ? "play-again-button" : "exit-button"}
               onClick={handlePlayAgain}
             >
-              {rewardClaimed ? 'Play Again' : 'Back to Menu'}
+              {finalScore < 500 ? 'Try Again' : rewardClaimed ? 'Play Again' : 'Back to Menu'}
             </button>
           </div>
         </div>
